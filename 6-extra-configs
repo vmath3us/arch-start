@@ -1,44 +1,23 @@
-            install docker rootless
-
-sudo touch /etc/subuid &&\
-sudo touch /etc/subgid &&\
-sudo usermod --add-subuids 165536-231072 --add-subgids 165536-231072 $USER &&\
-echo "kernel.unprivileged_userns_clone=1" | sudo tee /etc/sysctl.conf &&\
-curl -fsSL https://get.docker.com/rootless | sh
-
-            install docker-compose
-
-visit https://github.com/docker/compose/releases/latest
-download linux-x86_64 to /home/$USER/bin/docker-compose (chmod a+x)
-
-            install distrobox
-
+#!/bin/bash
+##            install docker rootless
+sudo touch /etc/subuid && sudo touch /etc/subgid && sudo usermod --add-subuids 165536-231072 --add-subgids 165536-231072 $USER && echo "kernel.unprivileged_userns_clone=1" | sudo tee /etc/sysctl.conf && curl -fsSL https://get.docker.com/rootless | sh
+##          install docker-compose
+curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o ~/bin/docker-compose && chmod a+x ~/bin/docker-compose
+##          install distrobox
 curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local
 create .distroboxrc
+##          install yt-dlp
+curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux -o ~/.local/bin/yt-dlp && chmod a+x ~/.local/bin/yt-dlp
+##           install streamlink
+##visit https://github.com/streamlink/streamlink-appimage/releases/latest/
+##download to /home/$USER/.local/bin/streamlink (chmod a+x)
+##           install ADB
+curl -L https://dl.google.com/android/repository/platform-tools-latest-linux.zip -o ~/Documents/adb.zip
+##extract,move content platform-tools do /opt/
 
-            install yt-dlp
-
-visit https://github.com/yt-dlp/yt-dlp/releases/latest
-download to /home/$USER/.local/bin/yt-dlp (chmod a+x)
-
-            install streamlink
-
-visit https://github.com/streamlink/streamlink-appimage/releases/latest
-download to /home/$USER/.local/bin/streamlink (chmod a+x)
-
-            install ADB
-curl -L https://dl.google.com/android/repository/platform-tools-latest-linux.zip -o adp.zip
-extract,move content platform-tools do /opt/
-
-            install fzf
+##           install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-            install nerd-fonts
-mkdir -p ~/.local/share/fonts &&\
-cd ~/.local/share/fonts &&\
-rm -rf * &&\
-git init &&\
-git remote add origin https://github.com/vmath3us/packfonts.git &&\ 
-git fetch &&\
-git checkout origin/main
+##           install nerd-fonts
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts && rm -rf .* ; rm -rf * ; git init && git remote add origin https://github.com/vmath3us/packfonts.git && git fetch && git checkout origin/main
