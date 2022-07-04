@@ -33,3 +33,10 @@ extract,move content platform-tools do /opt/
             install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+            install nerd-fonts
+mkdir -p ~/.local/share/fonts &&\
+cd /tmp &&\
+git clone https://github.com/vmath3us/packfonts.git &&\
+cd packfonts &&\
+mv * ~/.local/share/fonts/.
