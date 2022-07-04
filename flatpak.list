@@ -1,32 +1,32 @@
-com.anydesk.Anydesk
-com.brave.Browser
-com.github.tchx84.Flatseal
-com.github.wwmm.easyeffects
-com.google.Chrome
-com.mattjakeman.ExtensionManager
-com.rtosta.zapzap
-com.transmissionbt.Transmission
-com.visualstudio.code
-de.haeckerfelix.AudioSharing
-in.srev.guiscrcpy
-io.freetubeapp.FreeTube
-io.github.kotatogram
-io.github.peazip.PeaZip
-io.github.seadve.Kooha
-io.mpv.Mpv
-net.agalwood.Motrix
-nz.mega.MEGAsync
-org.flameshot.Flameshot
-org.gnome.Calculator
-org.gnome.Cheese
-org.gnome.Epiphany
-org.gnome.Evince
-org.gnome.SoundRecorder
-org.gnome.gThumb
-org.libreoffice.LibreOffice
-org.mozilla.firefox
-org.nicotine_plus.Nicotine
-org.pipewire.Helvum
-org.remmina.Remmina
-org.telegram.desktop
-org.videolan.VLC
+flathub	com.anydesk.Anydesk
+flathub	com.brave.Browser
+flathub	com.github.tchx84.Flatseal
+flathub	com.github.wwmm.easyeffects
+flathub	com.google.Chrome
+flathub	com.mattjakeman.ExtensionManager
+zapzap-origin	com.rtosta.zapzap
+flathub	com.transmissionbt.Transmission
+flathub	com.visualstudio.code
+flathub	de.haeckerfelix.AudioSharing
+flathub	in.srev.guiscrcpy
+flathub	io.freetubeapp.FreeTube
+flathub-beta	io.github.kotatogram
+flathub	io.github.peazip.PeaZip
+flathub	io.github.seadve.Kooha
+flathub	io.mpv.Mpv
+flathub	net.agalwood.Motrix
+flathub	nz.mega.MEGAsync
+flathub	org.flameshot.Flameshot
+flathub	org.gnome.Calculator
+flathub	org.gnome.Cheese
+flathub	org.gnome.Epiphany
+flathub	org.gnome.Evince
+flathub	org.gnome.SoundRecorder
+flathub	org.gnome.gThumb
+flathub	org.libreoffice.LibreOffice
+flathub	org.mozilla.firefox
+flathub	org.nicotine_plus.Nicotine
+flathub	org.pipewire.Helvum
+flathub	org.remmina.Remmina
+flathub	org.telegram.desktop
+flathub	org.videolan.VLC
