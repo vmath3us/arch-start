@@ -1,0 +1,43 @@
+[org/gnome/desktop/wm/keybindings]
+begin-resize=['<Alt>apostrophe']
+close=['<Super>q']
+cycle-windows=['<Alt>Tab']
+cycle-windows-backward=['<Shift><Alt>Tab']
+move-to-monitor-left=['<Alt>a']
+move-to-monitor-right=['<Alt>s']
+move-to-workspace-left=['<Alt>q']
+move-to-workspace-right=['<Alt>w']
+switch-applications=['<Alt>Escape']
+switch-applications-backward=['<Shift><Alt>Escape']
+switch-to-workspace-left=['<Alt>1']
+switch-to-workspace-right=['<Alt>2']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='F1'
+command='terminator'
+name='terminator'
+
+
+[org/gnome/desktop/input-sources]
+sources=[('xkb', 'br'), ('xkb', 'us+intl')]
+xkb-options=['ctrl:nocaps', 'shift:both_capslock']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>k'
+command='org.flameshot.Flameshot gui --delay 2000 '
+name='flaemshot'
+
+[org/gnome/shell/keybindings]
+screenshot=['Print']
+show-screenshot-ui=['<Shift>Print']
+
+[org/gnome/settings-daemon/plugins/power]
+idle-dim=false
+power-button-action='suspend'
+power-saver-profile-on-low-battery=false
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='nothing'
+
+disable-user-extensions=false
+disabled-extensions=@as []
+enabled-extensions=['clipboard-indicator@tudmotu.com', 'gnome-ui-tune@itstime.tech', 'hotedge@jonathan.jdoda.ca', 'panelScroll@sun.wxg@gmail.com', 'replaceActivitiesText@pratap.fastmail.fm', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'status-area-horizontal-spacing@mathematical.coffee.gmail.com', 'workspace-switcher-manager@G-dH.github.com', 'appindicatorsupport@rgcjonas.gmail.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'AlphabeticalAppGrid@stuarthayhurst', 'Vitals@CoreCoding.com']
