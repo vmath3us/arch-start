@@ -1,0 +1,53 @@
+[global_config]
+  window_state = maximise
+  borderless = True
+  title_transmit_bg_color = "#000000"
+  title_inactive_fg_color = "#ffffff"
+  title_inactive_bg_color = "#000000"
+  inactive_color_offset = 0.6744186046511628
+  suppress_multiple_term_dialog = True
+  title_use_system_font = False
+  title_font = Meslo LG S for Powerline Bold 9
+[keybindings]
+  cycle_next = ""
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  split_horiz = <Primary>f
+  split_vert = <Primary>g
+  resize_up = <Primary><Shift>k
+  resize_down = <Primary><Shift>j
+  resize_left = <Primary><Shift>h
+  resize_right = <Primary><Shift>l
+  move_tab_right = ""
+  move_tab_left = ""
+  next_tab = <Primary>Tab
+  hide_window = F2
+  layout_launcher = <Alt>p
+[profiles]
+  [[default]]
+    background_darkness = 0.86
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Fira Code Medium 14
+    foreground_color = "#ffffff"
+    scrollbar_position = hidden
+    scrollback_lines = 1000
+    palette = "#000000:#cc0000:#2ec27e:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#57e389:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+    background_image = None
+  [[keybindings]]
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    scrollbar_position = hidden
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
