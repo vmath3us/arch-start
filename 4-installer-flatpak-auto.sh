@@ -15,11 +15,12 @@ function manage_repo(){
     install_list
 }
 function install_list(){
-install=($(cat flatpak.list))
-total=$(cat flatpak.list | wc -l)
-counter=0
+remote=($(cat flatpak.list | cut -f1))          ### double (()) to bash array
+application=($(cat flatpak.list | cut -f2))     ### double (()) to bash array
+total=$(cat flatpak.list | wc -l)               ### generate list using "flatpak list --app --columns=remote,application > flatpak.list"
+counter=0  
 while [ $total -gt $counter ] ; do
-    flatpak install --user ${install[$counter]}
+    flatpak install ${remote[$counter]} --user ${application[$counter]} -y
     let ++counter
 done
 }
