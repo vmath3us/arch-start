@@ -42,9 +42,9 @@ UUID=btrfs_uuid_here	/home/USERNAME/.local/share/flatpak         	btrfs     	rw,
 #
 UUID=btrfs_uuid_here	/home/USERNAME/Documents	btrfs     	rw,noatime,compress-force=zstd:3,ssd,space_cache=v2,subvol=/@Documents	0 0
 #
-UUID=btrfs_uuid_here	/home/USERNAME/Musics	btrfs     	rw,noatime,compress-force=zstd:3,ssd,space_cache=v2,subvol=/@Musics	0 0
+UUID=btrfs_uuid_here	/home/USERNAME/Music	btrfs     	rw,noatime,compress-force=zstd:3,ssd,space_cache=v2,subvol=/@Music	0 0
 #
-UUID=btrfs_uuid_here	/home/USERNAME/Images	btrfs     	rw,noatime,compress-force=zstd:3,ssd,space_cache=v2,subvol=/@Images	0 0
+UUID=btrfs_uuid_here	/home/USERNAME/Pictures	btrfs     	rw,noatime,compress-force=zstd:3,ssd,space_cache=v2,subvol=/@Pictures	0 0
 #
 UUID=btrfs_uuid_here	/home/USERNAME/Videos	btrfs     	rw,noatime,compress-force=zstd:3,ssd,space_cache=v2,subvol=/@Videos	0 0
 #
@@ -58,7 +58,6 @@ UUID=btrfs_uuid_here	/home/USERNAME/Downloads	btrfs     	rw,noatime,compress-for
 #
 #########################################################################################################
 ################################### rootless container #########################################
-#
 #
 UUID=btrfs_uuid_here	/home/USERNAME/.local/share/docker	btrfs     	rw,noatime,compress-force=zstd:3,ssd,space_cache=v2,subvol=/@Docker	0 0
 #
@@ -99,4 +98,3 @@ tmpfs	/home/USERNAME/.cache/yay	tmpfs    rw,noatime,uid=1000,gid=1000 	0 0
 #
 #######################################################################################################
 #######################################################################################################
-#
