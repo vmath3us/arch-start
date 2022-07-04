@@ -1,0 +1,12 @@
+speed=2
+hwdec=vaapi
+ytdl-format=ba*[ext=m4a]
+ytdl-raw-options=cache-dir=/tmp
+demuxer-max-bytes=300M
+fullscreen=yes
+brightness=-5
+saturation=+7
+gamma=-2
+contrast=+5
+--no-audio-display
+volume-max=180

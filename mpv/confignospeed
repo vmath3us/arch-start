@@ -1,0 +1,11 @@
+speed=1
+hwdec=vaapi
+ytdl-format=bv*[height<=?360][vcodec*=avc1][fps<=30] + ba
+ytdl-raw-options=cache-dir=/tmp
+demuxer-max-bytes=300M
+fullscreen=yes
+brightness=-5
+saturation=+7
+gamma=-2
+contrast=+5
+volume-max=180

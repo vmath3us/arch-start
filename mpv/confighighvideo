@@ -1,0 +1,12 @@
+speed=2
+hwdec=vaapi
+ytdl-format=22
+#ytdl-format=22
+demuxer-max-bytes=300M
+ytdl-raw-options=cache-dir=/tmp
+fullscreen=yes
+brightness=-5
+saturation=+7
+gamma=-2
+contrast=+5
+volume-max=180

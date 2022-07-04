@@ -1,0 +1,10 @@
+hwdec=h264
+ytdl-format=bv*[height<=?1080][vcodec*=avc1][fps<=60] + ba
+demuxer-max-bytes=300M
+ytdl-raw-options=cache-dir=/tmp
+fullscreen=yes
+brightness=-5
+saturation=+7
+gamma=-2
+contrast=+5
+volume-max=180
