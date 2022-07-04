@@ -1,5 +1,5 @@
 1. mkfs.btrfs --checksum xxhash $block-device-root
-2. mount $block-device-root $mount-point-toplevel-ss:trfs
+2. mount $block-device-root $mount-point-toplevel-btrfs
 3. btrfs su cr $mount-point-toplevel-btrfs/@pacstrap
 4. mount $block-device-root subvol=@pacstrap $mount-point-pacstrap
 5. download 1-packagelist.pacman
