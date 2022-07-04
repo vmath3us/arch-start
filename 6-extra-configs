@@ -36,7 +36,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
             install nerd-fonts
 mkdir -p ~/.local/share/fonts &&\
-cd /tmp &&\
-git clone https://github.com/vmath3us/packfonts.git &&\
-cd packfonts &&\
-mv * ~/.local/share/fonts/.
+cd ~/.local/share/fonts &&\
+rm -rf * &&\
+git init &&\
+git remote add origin https://github.com/vmath3us/packfonts.git &&\ 
+git fetch &&\
+git checkout origin/main
