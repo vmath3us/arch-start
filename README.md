@@ -2,8 +2,7 @@
 2. mount $block-device-root $mount-point-toplevel-btrfs
 3. btrfs su cr $mount-point-toplevel-btrfs/@pacstrap
 4. mount $block-device-root subvol=@pacstrap $mount-point-pacstrap
-5. download 1-packagelist.pacman
-6. pacstrap $mount-point-pacstrap (using 1-packagelist.pacman into subshell cat)
+6. pacstrap $mount-point-pacstrap (using 1-packagelist.pacman into subshell $(curl https://raw.githubusercontent.com/vmath3us/arch-start/main/1-packagelist.pacman))
 7. chroot $mount-point-pacstrap
 
 into chroot, do:
