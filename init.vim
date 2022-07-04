@@ -71,11 +71,10 @@ map <C-j> <C-w>j
 map <C-h> <C-w>h
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-nmap sss  :source $HOME/.vimrc <CR> 
-nmap qq :q
+nmap qq :q <CR>
 nmap qqq :q! <CR>
 nmap wq :wq <CR>
-nmap ff :%s/
+nmap ss :%s/
 nmap ww :w <CR>
 nmap tt :split 
 nmap tv :vsplit
