@@ -4,7 +4,8 @@ sudo touch /etc/subuid && sudo touch /etc/subgid && sudo usermod --add-subuids 1
 docker_compose
 }
 function docker_compose(){
-curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o ~/bin/docker-compose && chmod a+x ~/bin/docker-compose && distrobox
+curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o ~/bin/docker-compose && chmod a+x ~/bin/docker-compose &&
+distrobox
 }
 function distrobox(){
 curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local && echo -n "container_image="archlinux"
@@ -15,7 +16,7 @@ function yt_dlp(){
 curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux -o ~/.local/bin/yt-dlp && chmod a+x ~/.local/bin/yt-dlp &&
 streamlink
 }
-function streamlink (){
+function streamlink(){
 echo -n "visit https://github.com/streamlink/streamlink-appimage/releases/latest/
 download to /home/$USER/.local/bin/streamlink (chmod a+x)" &&
 ADB
