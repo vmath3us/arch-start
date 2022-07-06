@@ -1,6 +1,7 @@
 #!/bin/bash
 function oh-my-zsh(){
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
+    exit &&
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions &&
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting &&
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf &&
@@ -19,7 +20,7 @@ distrobox
 }
 function distrobox(){
 curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local && echo -n "container_image="alpine"
-container_manager="podman"" > ~/.distroboxrc && systemctl enable --now podman && podman system migrate &&
+container_manager="podman"" > ~/.distroboxrc && systemctl enable --now --user podman && podman system migrate &&
 yt_dlp
 }
 function yt_dlp(){
@@ -32,7 +33,7 @@ download to /home/$USER/.local/bin/streamlink (chmod a+x)" &&
 ADB
 }
 function ADB(){
-curl -L https://dl.google.com/android/repository/platform-tools-latest-linux.zip -o ~/Documents/adb.zip &&
+curl -L https://dl.google.com/android/repository/platform-tools-latest-linux.zip -o adb.zip &&
 echo "extract,move content platform-tools do /opt/" &&
 exit 0
 }
