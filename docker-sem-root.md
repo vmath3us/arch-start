@@ -14,7 +14,7 @@ Ao final do último comando, serão apresentadas duas váriaveis de ambiente que
  
  **Um profissional cuidadoso começa em hábitos seguros de utilização da própria máquina;** [leia a documentação oficial](https://docs.docker.com/engine/security/rootless/) **, ela explicará a finalidade de cada comando**
 
-Para o docker-compose, em 12 de julho de 2022, basta:
+Para o docker-compose basta:
 
     curl -o ~/bin/docker-compose -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 && chmod a+x ~/bin/docker-compose
 
