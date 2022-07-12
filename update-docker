@@ -1,0 +1,6 @@
+#!/bin/bash
+systemctl --user stop docker
+rm -f ~/bin/dockerd
+curl -fsSL https://get.docker.com/rootless | sh
+curl -o ~/bin/docker-compose -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64
+chmod a+x ~/bin/docker-compose
