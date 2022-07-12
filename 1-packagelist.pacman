@@ -30,6 +30,8 @@ gnome-session
 gnome-shell
 gnome-terminal
 gnome-tweaks
+gpart
+gparted
 groff
 grub
 grub-btrfs
@@ -68,6 +70,7 @@ pkgconf
 podman
 power-profiles-daemon
 qemu-full
+reflector
 ripgrep
 rsync
 smartmontools
