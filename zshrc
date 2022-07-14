@@ -187,7 +187,8 @@ upload() {
 ##################################################-container-#######################################################
 newroot(){
     image=$@
-    name=${image/\//}
+    namebar=${image/\//}
+    name=${namebar/\:/}
     podman stop integrate-$name
     podman rm integrate-$name
     podman run --name integrate-$name -v /home:/home --detach-keys="ctrl-d" -it $@
@@ -197,8 +198,9 @@ root(){
     podman start integrate-$@ && podman attach integrate-$@ --detach-keys="ctrl-d"
 }
 newisoroot(){
-    image=$@
-    name=${image/\//}
+    image=$@ &&
+    namebar=${image/\//}&&
+    name=${namebar/\:/}&&
     podman stop iso-$name
     podman rm iso-$name
     podman run --name iso-$name --detach-keys="ctrl-d" -it $@
