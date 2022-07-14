@@ -7,7 +7,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH="$PATH=$HOME/bin:/usr/local/bin:$PATH"
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+export ZSH="/home/victormatheus/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -134,7 +134,7 @@ alias dmesg="sudo dmesg"
 alias compsize="sudo compsize"
 alias inteltop="sudo intel_gpu_top"
 alias updatebase="sudo pac-base -Syu --noconfirm"
-alias admin="sudo -i"
+alias admin="sudo -s"
 alias edit="nvim"
 alias top="htop"
 alias vim="nvim"
@@ -156,19 +156,23 @@ alias cmpv="ln -sf ~/.config/mpv/configclear ~/.config/mpv/config && io.mpv.Mpv 
 alias hmpv="ln -sf ~/.config/mpv/confighighvideo ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
 alias quality="yt-dlp -F"
 alias download='cd ~/Vídeos && yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f '
+alias downloadhere='yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f 22'
 alias downloadaudio="cd ~/Música && yt-dlp -f 251"
+######################################################################################
+alias lpishell='podman start lpi-debian && podman attach lpi-debian --detach-keys="ctrl-d"'
 ######################################################################################
 #
 #				export
 #
 ##################################################################################				
 export SYSTEMD_EDITOR="/usr/bin/nvim"
-export PATH=$PATH:/home/$USER/bin:/home/$USER/.local/bin:/opt
+export PATH=$PATH:/home/victormatheus/bin:/home/victormatheus/.local/bin:/opt
 export MANPAGER="nvim +Man!" 
 export EDITOR="nvim"
-export FZF_BASE=/home/$USER/fzf/shell
+export FZF_BASE=/home/victormatheus/fzf/shell
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
-export XDG_DATA_DIRS=/home/$USER/.local/share/:/home/$USER/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+export DOCKER_CONTEXT=default
+export XDG_DATA_DIRS=/home/victormatheus/.local/share/:/home/victormatheus/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
 #upload file,512mb limit
 upload() {
     for i in "$@" 
@@ -180,3 +184,26 @@ upload() {
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+##################################################-container-#######################################################
+newroot(){
+    image=$@
+    name=${image/\//}
+    podman stop integrate-$name
+    podman rm integrate-$name
+    podman run --name integrate-$name -v /home:/home --detach-keys="ctrl-d" -it $@
+    podman ps
+}
+root(){
+    podman start integrate-$@ && podman attach integrate-$@ --detach-keys="ctrl-d"
+}
+newisoroot(){
+    image=$@
+    name=${image/\//}
+    podman stop iso-$name
+    podman rm iso-$name
+    podman run --name iso-$name --detach-keys="ctrl-d" -it $@
+    podman ps
+}
+isoroot(){
+    podman start iso-$@ && podman attach iso-$@ --detach-keys="ctrl-d"
+}
