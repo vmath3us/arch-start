@@ -1,6 +1,6 @@
 #!/bin/bash
 function no-devel(){
-    pacman -Qqe | grep -Ev "$(pacman -Qqm)" | grep -Ev "$(pacman -Qg base-devel | cut -d " " -f2)" > 1.1-packagelist-not-devel.pacman &&
+execute=$(pacman -Qqe | grep -Ev "$(pacman -Qqm)" | grep -Ev "$(pacman -Qg base-devel | cut -d " " -f2)" > 1.1-packagelist-not-devel.pacman) &&
     git commit -am "ArchGnome Workstation list explicit, no base-devel" &&
     git pull
 }
