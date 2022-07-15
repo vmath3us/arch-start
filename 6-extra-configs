@@ -15,10 +15,6 @@ distrobox
 function distrobox(){
 curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local && echo -n "container_image="alpine"
 container_manager="podman"" > ~/.distroboxrc && systemctl enable --now --user podman && podman system migrate &&
-yt_dlp
-}
-function yt_dlp(){
-curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux -o ~/.local/bin/yt-dlp && chmod a+x ~/.local/bin/yt-dlp &&
 streamlink
 }
 function streamlink(){
@@ -29,6 +25,15 @@ ADB
 function ADB(){
 curl -L https://dl.google.com/android/repository/platform-tools-latest-linux.zip -o adb.zip &&
 echo "extract,move content platform-tools do /opt/" &&
-exit 0
+font_setup
 }
-docker_rootless
+function font_setup(){
+rm -rf ~/.local/share/fonts/ &&\
+mkdir -p ~/.local/share/fonts/ &&\
+cd ~/.local/share/fonts &&\
+git init &&\
+git remote add origin https://github.com/vmath3us/packfonts.git &&\ 
+git fetch &&\
+git checkout origin/main
+}
+gh_bin
