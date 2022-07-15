@@ -49,7 +49,6 @@ iptables-nft
 iwd
 libva-intel-driver
 linux-firmware
-linux-wifi-hotspot
 linux-zen
 linux-zen-headers
 m4
@@ -97,5 +96,4 @@ xdg-user-dirs
 xf86-video-intel
 yt-dlp
 zita-alsa-pcmi
-zramd
 zsh
