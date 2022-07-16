@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""if protect vim"""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""if protect vim"""""""""""""""""""""""""
 if (has("nvim")) " . Only for nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""vim-plug""""""""""""""""""""""""""""
     call plug#begin()
@@ -9,6 +9,9 @@ if (has("nvim")) " . Only for nvim
         Plug 'junegunn/fzf.vim'
         Plug 'jiangmiao/auto-pairs'
         Plug 'ryanoasis/vim-devicons'
+"""         Plug 'wbthomason/packer.nvim'
+"""         Plug 'neovim/nvim-lspconfig'
+"""         Plug 'williamboman/nvim-lsp-installer'
         Plug 'sheerun/vim-polyglot'
     call plug#end()
     """"""""""""""""""""""""""""""airline"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -71,16 +74,22 @@ map <C-j> <C-w>j
 map <C-h> <C-w>h
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-nmap qq :q <CR>
-nmap qqq :q! <CR>
+nmap qq :q
+nmap qf :q!
 nmap wq :wq <CR>
 nmap ss :%s/
 nmap ww :w <CR>
 nmap tt :split 
 nmap tv :vsplit
-nmap tf :Files <CR>
 nmap op o<Esc>k
 nmap oi O<Esc>j
 nmap oo A<CR>
 inoremap jk <Esc>
 vnoremap jk <Esc>
+"""""""""""""""""""""""""""""""""fzf"""""""""""""""""""""""""""""""""
+nmap ff <Esc> :Files ~/
+vnoremap ff <Esc> :Files ~/
+map bb <Esc> :Buffers <CR>
+"""""""""""""""""""""""""""buffer managment"""""""""""""""""""""""""""
+map bw <Esc> :w <CR> <Esc> :bw <CR>
+map bq <Esc> :bdelete! <CR>
