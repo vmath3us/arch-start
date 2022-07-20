@@ -160,6 +160,8 @@ alias downloadhere='yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f 22'
 alias downloadaudio="cd ~/Música && yt-dlp -f 251"
 ######################################################################################
 alias lpishell='podman start lpi-debian && podman attach lpi-debian --detach-keys="ctrl-d"'
+alias golang="docker start golangalpine && docker exec -it golangalpine /bin/sh"
+alias k="kubectl"
 ######################################################################################
 #
 #				export
@@ -209,3 +211,7 @@ newisoroot(){
 isoroot(){
     podman start iso-$@ && podman attach iso-$@ --detach-keys="ctrl-d"
 }
+tarsplit(){
+    tar --owner=0 --group=0 $@ --zstd -cf - | split - -b 500M -d $@.tar.zst.part.
+}
+source <(kubectl completion zsh)
