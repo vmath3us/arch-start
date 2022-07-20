@@ -212,6 +212,8 @@ isoroot(){
     podman start iso-$@ && podman attach iso-$@ --detach-keys="ctrl-d"
 }
 tarsplit(){
-    tar --owner=0 --group=0 $@ --zstd -cf - | split - -b 500M -d $@.tar.zst.part.
+    moment=$(date +%Y-%m-%d--%T)
+    data=$moment
+    tar --owner=0 --group=0 $@ --zstd -cf - | split - -b 500M -d tarball-in-$data.tar.zst.part.
 }
 source <(kubectl completion zsh)
