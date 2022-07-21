@@ -9,8 +9,6 @@ bison
 bluez
 bluez-utils
 btrfs-progs
-cockpit
-cockpit-podman
 compsize
 containerd
 cpupower
