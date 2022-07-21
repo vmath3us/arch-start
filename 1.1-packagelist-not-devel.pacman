@@ -6,8 +6,12 @@ bat
 bluez
 bluez-utils
 btrfs-progs
+cockpit
+cockpit-podman
 compsize
+containerd
 cpupower
+cri-o
 dnsmasq
 dosfstools
 earlyoom
@@ -16,6 +20,7 @@ ffmpeg
 ffmpegthumbnailer
 flatpak
 flatpak-xdg-utils
+fuse-overlayfs
 gdm
 git
 gnome-control-center

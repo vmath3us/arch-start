@@ -9,8 +9,12 @@ bison
 bluez
 bluez-utils
 btrfs-progs
+cockpit
+cockpit-podman
 compsize
+containerd
 cpupower
+cri-o
 dnsmasq
 dosfstools
 earlyoom
@@ -21,6 +25,7 @@ ffmpegthumbnailer
 flatpak
 flatpak-xdg-utils
 flex
+fuse-overlayfs
 gcc
 gdm
 git
