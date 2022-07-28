@@ -1,6 +1,6 @@
 #!/bin/bash
 root_dir=$(mktemp -d -p /tmp)
-block_device_root="/dev/sda3" ###################### insert here, into quotes
+block_device_root="name_block_device_here" ###################### insert here, into quotes
 function create(){
 mount $block_device_root -o "subvolid="5 $root_dir &&
 btrfs su cr $root_dir/@cache
