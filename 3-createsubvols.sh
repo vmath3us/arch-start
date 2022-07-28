@@ -7,7 +7,7 @@ btrfs su cr $root_dir/@cache
 btrfs su cr $root_dir/@log
 btrfs su cr $root_dir/@home
 read -p "owner:group home dirs: " perm
-for i in @flatpak @Docker @Podman @Documents @Pictures @Music @Videos @Downloads; do
+for i in @flatpak @Docker @Podman @fonts @Documents @Pictures @Music @Videos @Downloads; do
 	btrfs su cr $root_dir/$i
 	chown -R $perm $root_dir/$i
 done
