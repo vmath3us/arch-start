@@ -92,7 +92,7 @@ UUID=xfs_uuid_here	/home/USERNAME/VirtualBox\040VMs	xfs       	rw,noatime,inode6
 #
 #
 #######################################################################################################
-###################################### tmpfs to yay downloads ############################
+###################################### tmpfs to yay downloads, into distrobox container ############################
 #
 tmpfs	/home/USERNAME/.cache/yay	tmpfs    rw,noatime,uid=1000,gid=1000 	0 0
 #
