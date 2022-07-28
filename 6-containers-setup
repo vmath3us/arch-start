@@ -11,5 +11,16 @@ docker_compose
 }
 function docker_compose(){
 curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o ~/bin/docker-compose && chmod a+x ~/bin/docker-compose &&
+kubernetes
+}
+function kubernetes(){
+    curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl &&
+    chmod a+x ~/.local/bin/kubectl
+    &&
+    curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert" -o ~/.local/bin/kubectl-convert &&
+    chmod a+x ~/.local/bin/kubectl-convert
+    &&
+    curl -L https://github.com/kubernetes/kompose/releases/download/v1.26.1/kompose-linux-amd64 -o ~/.local/bin/kompose &&
+    chmod a+x ~/.local/bin/kompose
 }
 distrobox
