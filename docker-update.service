@@ -1,0 +1,6 @@
+[Unit]
+Description=update docker rootless and docker compose
+
+[Service]
+Type=oneshot
+ExecStart = /home/--your-username-here--/.local/bin/update-docker
