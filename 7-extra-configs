@@ -11,7 +11,7 @@ ADB
 }
 function ADB(){
 curl -L https://dl.google.com/android/repository/platform-tools-latest-linux.zip -o adb.zip &&
-echo "extract,move content platform-tools do /opt/" &&
+echo "extract,move platform-tools to /opt/, ln -s adb in /usr/local/bin" &&
 font_setup
 }
 function font_setup(){
