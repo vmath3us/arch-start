@@ -1,0 +1,6 @@
+[Unit]
+Description=update distrobox
+
+[Service]
+Type=oneshot
+ExecStart = /home/--your-username-here--/.local/bin/update-distrobox
