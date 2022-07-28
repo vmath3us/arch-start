@@ -14,3 +14,4 @@ into chroot, do:
 5. run install-stateless-arch-tools.sh and follow instructions
 6. reboot
 7. clone this repo
+8. follow the trail
