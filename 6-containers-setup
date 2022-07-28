@@ -1,0 +1,15 @@
+#!/bin/bash
+function distrobox(){
+sudo touch /etc/subuid && sudo touch /etc/subgid && sudo usermod --add-subuids 165536-231072 --add-subgids 165536-231072 $USER && echo "kernel.unprivileged_userns_clone=1" | sudo tee /etc/sysctl.conf && 
+curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local && echo -n "container_image="archlinux"
+container_manager="podman"" > ~/.distroboxrc && systemctl enable --now --user podman && podman system migrate &&
+docker_rootless
+}
+function docker_rootless(){
+curl -fsSL https://get.docker.com/rootless | sh &&
+docker_compose
+}
+function docker_compose(){
+curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o ~/bin/docker-compose && chmod a+x ~/bin/docker-compose &&
+}
+distrobox

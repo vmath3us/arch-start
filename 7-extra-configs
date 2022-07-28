@@ -1,0 +1,26 @@
+#!/bin/bash
+function gh_bin(){
+    echo "visit
+https://github.com/cli/cli/releases/, donwload amd64, mv bin to ~/.local/bin/." &&
+streamlink
+}
+function streamlink(){
+echo -n "visit https://github.com/streamlink/streamlink-appimage/releases/latest/
+download to /home/$USER/.local/bin/streamlink (chmod a+x)" &&
+ADB
+}
+function ADB(){
+curl -L https://dl.google.com/android/repository/platform-tools-latest-linux.zip -o adb.zip &&
+echo "extract,move content platform-tools do /opt/" &&
+font_setup
+}
+function font_setup(){
+rm -rf ~/.local/share/fonts/ &&\
+mkdir -p ~/.local/share/fonts/ &&\
+cd ~/.local/share/fonts &&\
+git init &&\
+git remote add origin https://github.com/vmath3us/packfonts.git &&\ 
+git fetch &&\
+git checkout origin/main
+}
+gh_bin
