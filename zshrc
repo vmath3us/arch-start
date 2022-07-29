@@ -162,6 +162,8 @@ alias downloadaudio="cd ~/Música && yt-dlp -f 251"
 alias lpishell='podman start lpi-debian && podman attach lpi-debian --detach-keys="ctrl-d"'
 alias golang="docker start golangalpine && docker exec -it golangalpine /bin/sh"
 alias k="kubectl"
+alias ip="ip -br -c a"
+alias paste='curl -F 'file=@-' 0x0.st'
 ######################################################################################
 #
 #				export
