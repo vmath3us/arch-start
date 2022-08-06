@@ -47,6 +47,7 @@ libva-intel-driver
 linux-firmware
 linux-zen
 linux-zen-headers
+lsof
 mtools
 nautilus
 neofetch
@@ -67,6 +68,7 @@ rsync
 smartmontools
 strace
 terminator
+tk
 tree
 ufw
 util-linux
