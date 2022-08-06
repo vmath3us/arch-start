@@ -54,6 +54,7 @@ libva-intel-driver
 linux-firmware
 linux-zen
 linux-zen-headers
+lsof
 m4
 make
 mtools
@@ -82,6 +83,7 @@ strace
 sudo
 terminator
 texinfo
+tk
 tree
 ufw
 util-linux
