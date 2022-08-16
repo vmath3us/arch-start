@@ -20,7 +20,7 @@ UUID=btrfs_uuid_here	/var/log         	btrfs     	rw,noatime,compress-force=zstd
 #######################################################################################################
 ################################### head home ######################################
 #
-UUID=btrfs_uuid_here	/home         	btrfs     	rw,noatime,compress-force=zstd,ssd,space_cache=v2,subvol=/@home	0 0
+UUID=btrfs_uuid_here	/home/USERNAME         	btrfs     	rw,noatime,compress-force=zstd,ssd,space_cache=v2,subvol=/@home	0 0
 #
 #######################################################################################################
 #######################################################################################################
