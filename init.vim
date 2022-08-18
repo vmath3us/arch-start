@@ -90,6 +90,6 @@ vnoremap jk <Esc>
 nmap ff <Esc> :Files ~/
 vnoremap ff <Esc> :Files ~/
 map bb <Esc> :Buffers <CR>
-"""""""""""""""""""""""""""buffer managment"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""buffer management"""""""""""""""""""""""""""
 map bw <Esc> :w <CR> <Esc> :bw <CR>
 map bq <Esc> :bdelete! <CR>
