@@ -10,6 +10,7 @@ compsize
 containerd
 cpupower
 cri-o
+dmidecode
 dnsmasq
 dosfstools
 earlyoom
@@ -44,9 +45,11 @@ iotop
 iptables-nft
 iwd
 libva-intel-driver
+libva-utils
 linux-firmware
 linux-zen
 linux-zen-headers
+lshw
 lsof
 mtools
 nautilus
@@ -71,6 +74,7 @@ terminator
 tk
 tree
 ufw
+usbutils
 util-linux
 v4l2loopback-dkms
 v4l2loopback-utils
