@@ -1,4 +1,6 @@
 flathub	app.drey.Blurble
+flathub	ca.desrt.dconf-editor
+flathub	ch.imatt.ClipQR
 flathub	com.anydesk.Anydesk
 flathub	com.brave.Browser
 flathub	com.github.donadigo.appeditor
@@ -9,9 +11,11 @@ flathub	com.google.Chrome
 flathub	com.mattjakeman.ExtensionManager
 flathub	com.rtosta.zapzap
 flathub	com.stremio.Stremio
+flathub	com.sweethome3d.Sweethome3d
 flathub	com.transmissionbt.Transmission
 flathub	com.visualstudio.code
 flathub	de.haeckerfelix.AudioSharing
+flathub	eu.ithz.umftpd
 flathub	in.srev.guiscrcpy
 flathub	io.freetubeapp.FreeTube
 flathub-beta	io.github.kotatogram
@@ -20,6 +24,7 @@ flathub	io.github.seadve.Kooha
 flathub	io.github.spacingbat3.webcord
 flathub	io.mpv.Mpv
 flathub	net.agalwood.Motrix
+flathub	no.mifi.losslesscut
 flathub	nz.mega.MEGAsync
 flathub	org.flameshot.Flameshot
 flathub	org.gnome.Calculator
@@ -27,6 +32,7 @@ flathub	org.gnome.Cheese
 flathub	org.gnome.Epiphany
 flathub	org.gnome.Evince
 flathub	org.gnome.GHex
+flathub	org.gnome.NautilusPreviewer
 flathub	org.gnome.NetworkDisplays
 flathub	org.gnome.SoundRecorder
 flathub	org.gnome.gThumb
@@ -38,3 +44,4 @@ flathub	org.pipewire.Helvum
 flathub	org.remmina.Remmina
 flathub	org.telegram.desktop
 flathub	org.videolan.VLC
+flathub	ro.fxdata.taskmonitor.viewer
