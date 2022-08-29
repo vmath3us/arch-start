@@ -44,6 +44,7 @@ iotop
 iptables-nft
 iwd
 libva-intel-driver
+libva-utils
 linux-firmware
 linux-zen
 linux-zen-headers
@@ -69,6 +70,7 @@ smartmontools
 strace
 terminator
 tk
+tmate
 tree
 ufw
 util-linux
