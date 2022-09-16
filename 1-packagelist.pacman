@@ -31,7 +31,6 @@ gnome-control-center
 gnome-remote-desktop
 gnome-session
 gnome-shell
-gnome-terminal
 gnome-tweaks
 gpart
 gparted
@@ -86,8 +85,10 @@ terminator
 texinfo
 tk
 tmate
+traceroute
 tree
 ufw
+usbutils
 util-linux
 v4l2loopback-dkms
 v4l2loopback-utils
