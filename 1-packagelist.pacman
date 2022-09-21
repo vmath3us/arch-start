@@ -20,6 +20,7 @@ efibootmgr
 fakeroot
 ffmpeg
 ffmpegthumbnailer
+firewalld
 flatpak
 flatpak-xdg-utils
 flex
@@ -42,7 +43,6 @@ gst-plugin-pipewire
 gst-plugins-ugly
 gstreamer
 gstreamer-vaapi
-gufw
 htop
 intel-gpu-tools
 intel-ucode
@@ -87,7 +87,6 @@ tk
 tmate
 traceroute
 tree
-ufw
 usbutils
 util-linux
 v4l2loopback-dkms
