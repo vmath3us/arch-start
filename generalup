@@ -1,0 +1,7 @@
+distrobox upgrade --all & 
+flatpak update --noninteractive &
+sudo pacman -Syyuu
+read -p "atualizar sistema? zero para sim, qualquer caracter para não" att
+if [[ $att == "0" ]] ; then
+sudo pac-base -Syyuu --noconfirm;
+fi
