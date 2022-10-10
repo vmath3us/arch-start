@@ -2,7 +2,12 @@
 #######################################################################################################
 #######################################################################################################
 #
-# root subvol is mounted using cmline bootloader, not required
+# root subvol is mounted using cmline bootloader, not required to mount, but need to compress-level
+#######################################################################################################
+
+UUID=btrfs_uuid_here	/         	btrfs     	noatime,compress-force=zstd,ssd,space_cache=v2	0 0
+
+######################################### not add subvolname ##########################################
 #
 #
 ############################## root mounts to not rollback cache/logs ##################################
@@ -93,10 +98,10 @@ UUID=fat_uuid_here 					/boot/efi	vfat		defaults 0 0
 #
 #
 #########################################################################################################
-################## xfs to virtualmachines, better IO performance. store virt-manager images here
 #
-UUID=xfs_uuid_here	/home/USERNAME/VirtualBox\040VMs	xfs       	rw,noatime,inode64,logbufs=8,logbsize=32k,noquota	0 0
+UUID=btrfs_uuid_here	/home/USERNAME/VMs	btrfs     	rw,noatime,ssd,space_cache=v2,subvol=/@VMs	0 0
 #
+################################### chattr +C in creation #############################################
 #######################################################################################################
 #######################################################################################################
 #
@@ -109,4 +114,7 @@ UUID=xfs_uuid_here	/home/USERNAME/VirtualBox\040VMs	xfs       	rw,noatime,inode6
 tmpfs	/home/USERNAME/.cache/yay	tmpfs    rw,noatime,uid=1000,gid=1000 	0 0
 #
 #######################################################################################################
+####################################### tmpfs for prints, no preserve #################################
+#
+tmpfs	/home/USERNAME/Pictures/Screenshots	tmpfs    rw,noatime,uid=1000,gid=1000 	0 0
 #######################################################################################################
