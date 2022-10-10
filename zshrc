@@ -85,6 +85,7 @@ plugins=(
      zsh-autosuggestions
      systemd
      zsh-syntax-highlighting
+     k
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -139,6 +140,12 @@ alias edit="nvim"
 alias top="htop"
 alias vim="nvim"
 alias flist="flatpak list --app --columns=name,application"
+alias fin="flatpak install"
+alias fr="flatpak remove"
+alias fs="flatpak search"
+alias flup="flatpak update -y"
+alias flt="flatpak"
+alias alpbox="distrobox enter alpine-box"
 ####################################-btrfs-####################################################
 alias btro="sudo btrfs su snap -r"
 alias show="sudo btrfs su show"
@@ -156,19 +163,23 @@ alias cmpv="ln -sf ~/.config/mpv/configclear ~/.config/mpv/config && io.mpv.Mpv 
 alias hmpv="ln -sf ~/.config/mpv/confighighvideo ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
 alias quality="yt-dlp -F"
 alias download='cd ~/Vídeos && yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f '
-alias downloadhere='yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f 22'
-alias downloadaudio="cd ~/Música && yt-dlp -f 251"
+alias downloadhere='yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f'
+alias downloadaudio="cd ~/Música && yt-dlp -f 140"
 ######################################################################################
 alias lpishell='podman start lpi-debian && podman attach lpi-debian --detach-keys="ctrl-d"'
 alias golang="docker start golangalpine && docker exec -it golangalpine /bin/sh"
-alias k="kubectl"
 alias ip="ip -br -c a"
 alias paste='curl -F 'file=@-' 0x0.st'
+alias dhe="distrobox-host-exec"
+alias dtb="distrobox"
+alias startdrop="docker start snapdrop"
+alias killdrop="docker stop snapdrop"
 ######################################################################################
 #
 #				export
 #
-##################################################################################				
+##################################################################################
+#export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export SYSTEMD_EDITOR="/usr/bin/nvim"
 export PATH=$PATH:/home/USERNAME/bin:/home/USERNAME/.local/bin:/opt
 export MANPAGER="nvim +Man!" 
@@ -218,4 +229,49 @@ tarsplit(){
     data=$moment
     tar --owner=0 --group=0 $@ --zstd -cf - | split - -b 500M -d ${@[1]}-in-$data.tar.zst.part.
 }
-source <(kubectl completion zsh)
+tarsingle(){
+    moment=$(date +%Y-%m-%d--%H-%M-%S)
+    data=$moment
+    tar --owner=0 --group=0 $@ --zstd -cf $@.tar.zst
+}
+#source <(kubectl completion zsh)
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+command_not_found_handle() {
+# don't run if not in a container
+  if [ ! -e /run/.containerenv ] && [ ! -e /.dockerenv ]; then
+    exit 127
+  fi
+  
+  distrobox-host-exec "${@}"
+}
+if [ -n "${ZSH_VERSION-}" ]; then
+  command_not_found_handler() {
+    command_not_found_handle "$@"
+ }
+fi
+vagrant(){
+  podman run -it --rm \
+    -e LIBVIRT_DEFAULT_URI \
+    -v /var/run/libvirt/:/var/run/libvirt/ \
+    -v ~/Documentos/vagrant.d:/.vagrant.d \
+    -v $(realpath "${PWD}"):${PWD} \
+    -w "${PWD}" \
+    --network host \
+    --entrypoint /bin/bash \
+    --security-opt label=disable \
+    docker.io/vagrantlibvirt/vagrant-libvirt:latest \
+      vagrant $@
+}
+generalup(){
+for i in "distrobox upgrade --all" "flatpak update -y" do; $i & ; done
+    sudo pacman -Syu
+    echo "atualizar sistema? zero para sim, qualquer caracter para não"
+    read att
+    if [[ $att == "0" ]] ; then
+    sudo pac-base -Syyuu;
+    fi
+}
