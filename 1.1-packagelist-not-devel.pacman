@@ -1,5 +1,6 @@
 alsa-firmware
 alsa-utils
+android-tools
 arch-install-scripts
 base
 bat
@@ -36,6 +37,7 @@ gst-plugin-pipewire
 gst-plugins-ugly
 gstreamer
 gstreamer-vaapi
+gvfs-mtp
 htop
 intel-gpu-tools
 intel-ucode
