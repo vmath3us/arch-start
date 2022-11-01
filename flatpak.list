@@ -4,6 +4,7 @@ flathub	ch.imatt.ClipQR
 flathub	ch.openboard.OpenBoard
 flathub	chat.delta.desktop
 flathub	com.anydesk.Anydesk
+flathub	com.belmoussaoui.Decoder
 flathub	com.brave.Browser
 flathub	com.github.Eloston.UngoogledChromium
 flathub	com.github.GradienceTeam.Gradience
@@ -31,6 +32,7 @@ flathub	io.github.peazip.PeaZip
 flathub	io.github.seadve.Kooha
 flathub	io.github.spacingbat3.webcord
 flathub	io.mpv.Mpv
+flathub	me.aandrew.ytdownloader
 flathub	net.agalwood.Motrix
 flathub	no.mifi.losslesscut
 flathub	nz.mega.MEGAsync
@@ -51,14 +53,17 @@ flathub	org.gnome.Evince
 flathub-beta	org.gnome.Evolution
 flathub	org.gnome.Fractal
 flathub	org.gnome.GHex
+flathub	org.gnome.Maps
 flathub	org.gnome.NautilusPreviewer
 flathub	org.gnome.NetworkDisplays
 flathub	org.gnome.SoundRecorder
+flathub	org.gnome.Weather
 flathub	org.gnome.World.PikaBackup
 flathub	org.gnome.gThumb
 flathub	org.kde.gwenview
-kde-apps	org.kde.konsole
+kdeapps	org.kde.konsole
 flathub	org.libreoffice.LibreOffice
+flathub	org.mixxx.Mixxx
 flathub	org.mozilla.firefox
 flathub	org.nicotine_plus.Nicotine
 flathub	org.pipewire.Helvum
