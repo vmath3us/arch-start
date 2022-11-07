@@ -1,0 +1,2 @@
+distrobox create arch-virtualbox --image archlinux --volume /var/cache/pacman/pkg:/var/cache/pacman/pkg:rw --additional-flags "--privileged --cap-add=ALL --security-opt label=disable" --pre-init-hooks "pacman -Syyu linux-zen linux-zen-headers mkinitcpio virtualbox-host-dkms virtualbox neovim htop --noconfirm --needed" --init-hooks "sudo modprobe vboxdrv" --root
+###### additional-flags needed to using vboxdrv kernel module
