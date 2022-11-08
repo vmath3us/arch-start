@@ -1,0 +1,19 @@
+#!/bin/bash
+toplevel_dir=$(mktemp -d -p /tmp)
+block_device=$(grub-probe / --target=device)
+moment=$(date +%Y-%m-%d--%H-%M-%S)
+snapshots(){
+for i in @Documentos @Downloads @Musicas @Videos @Imagens; do
+    if [ -d $toplevel_dir/$i--* ] ; then btrfs su del $toplevel_dir/$i--* ; fi &&
+    btrfs su sn -r $toplevel_dir/$i $toplevel_dir/$i--$moment &&
+    btrfs filesystem sync $toplevel_dir
+done
+exiting
+}
+exiting(){
+    umount $toplevel_dir &&
+    rmdir $toplevel_dir &&
+    exit 0
+}
+mount $block_device $toplevel_dir -o 'subvolid='5 &&
+snapshots
