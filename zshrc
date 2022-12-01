@@ -1,3 +1,4 @@
+unset SESSION_MANAGER
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -145,7 +146,9 @@ alias fr="flatpak remove"
 alias fs="flatpak search"
 alias flup="flatpak update -y"
 alias flt="flatpak"
-alias alpbox="distrobox enter alpine-box"
+alias alpbox="distrobox enter alpinedev"
+alias host="terminator -p default"
+
 ####################################-btrfs-####################################################
 alias btro="sudo btrfs su snap -r"
 alias show="sudo btrfs su show"
@@ -162,8 +165,8 @@ alias ampv="ln -sf ~/.config/mpv/configaudio ~/.config/mpv/config && io.mpv.Mpv 
 alias cmpv="ln -sf ~/.config/mpv/configclear ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
 alias hmpv="ln -sf ~/.config/mpv/confighighvideo ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
 alias quality="yt-dlp -F"
-alias download='cd ~/Vídeos && yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f '
-alias downloadhere='yt-dlp --ppa "Merger+ffmpeg_i1:-hwaccel vaapi" -f'
+alias download='cd ~/Vídeos && yt-dlp -f '
+alias downloadhere='yt-dlp -f'
 alias downloadaudio="cd ~/Música && yt-dlp -f 140"
 ######################################################################################
 alias lpishell='podman start lpi-debian && podman attach lpi-debian --detach-keys="ctrl-d"'
@@ -172,7 +175,7 @@ alias ip="ip -br -c a"
 alias paste='curl -F 'file=@-' 0x0.st'
 alias dhe="distrobox-host-exec"
 alias dtb="distrobox"
-alias startdrop="docker start snapdrop"
+alias startdrop="docker start snapdrop && ip"
 alias killdrop="docker stop snapdrop"
 ######################################################################################
 #
@@ -206,7 +209,7 @@ newroot(){
     name=${namebar/\:/}
     podman stop integrate-$name
     podman rm integrate-$name
-    podman run --name integrate-$name -v /home:/home --detach-keys="ctrl-d" -it $@
+    podman run --name integrate-$name -v $(realpath "${PWD}"):${PWD} --detach-keys="ctrl-d" -it $@
     podman ps
 }
 root(){
@@ -266,12 +269,14 @@ vagrant(){
     docker.io/vagrantlibvirt/vagrant-libvirt:latest \
       vagrant $@
 }
-generalup(){
-for i in "distrobox upgrade --all" "flatpak update -y" do; $i & ; done
-    sudo pacman -Syu
-    echo "atualizar sistema? zero para sim, qualquer caracter para não"
-    read att
-    if [[ $att == "0" ]] ; then
-    sudo pac-base -Syyuu;
-    fi
+archwiki(){
+search_term=$(echo $@ | sed 's/\ /+/g')
+lynx "https://wiki.archlinux.org/index.php?search="$search_term
 }
+deb(){
+    for i in $@ ; do
+        distrobox-export --bin /usr/bin/$i --export-path /home/USERNAME/.local/bin
+    done
+}
+grep alpinedev /etc/hostname &&
+if [ $? -eq 0 ] ; then clear ; fi
