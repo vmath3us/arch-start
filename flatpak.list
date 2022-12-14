@@ -1,10 +1,12 @@
 flathub	app.drey.Blurble
+valent-origin	ca.andyholmes.Valent
 flathub	ca.desrt.dconf-editor
 flathub	ch.imatt.ClipQR
 flathub	ch.openboard.OpenBoard
 flathub	chat.delta.desktop
 flathub	com.anydesk.Anydesk
 flathub	com.belmoussaoui.Decoder
+flathub	com.bitwarden.desktop
 flathub	com.brave.Browser
 flathub	com.github.Eloston.UngoogledChromium
 flathub	com.github.GradienceTeam.Gradience
@@ -61,7 +63,9 @@ flathub	org.gnome.SoundRecorder
 flathub-beta	org.gnome.TextEditor
 flathub	org.gnome.Weather
 flathub	org.gnome.World.PikaBackup
+flathub	org.gnome.eog
 flathub	org.gnome.gThumb
+flathub	org.gnome.seahorse.Application
 flathub	org.gustavoperedo.FontDownloader
 flathub	org.kde.gwenview
 kdeapps	org.kde.konsole
