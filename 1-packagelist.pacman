@@ -54,8 +54,8 @@ iwd
 libva-intel-driver
 libva-utils
 linux-firmware
-linux-zen
-linux-zen-headers
+linux-lqx
+linux-lqx-headers
 lsof
 m4
 make
@@ -75,6 +75,7 @@ pipewire-pulse
 pipewire-v4l2
 pkgconf
 podman
+podman-dnsname
 power-profiles-daemon
 qemu-full
 reflector
