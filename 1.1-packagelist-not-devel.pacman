@@ -47,8 +47,8 @@ iwd
 libva-intel-driver
 libva-utils
 linux-firmware
-linux-zen
-linux-zen-headers
+linux-lqx
+linux-lqx-headers
 lsof
 mtools
 nautilus
@@ -64,6 +64,7 @@ pipewire-jack
 pipewire-pulse
 pipewire-v4l2
 podman
+podman-dnsname
 qemu-full
 reflector
 rsync
