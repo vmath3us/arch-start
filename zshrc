@@ -131,7 +131,7 @@ bindkey -M viins 'jk' vi-cmd-mode
 alias c="clear"
 alias iotop="sudo iotop"
 alias powersave="sudo cpupower frequency-set -g powersave"
-alias powernormal="sudo cpupower frequency-set -g schedutil"
+alias powernormal="sudo cpupower frequency-set -g userspace"
 alias dmesg="sudo dmesg"
 alias compsize="sudo compsize"
 alias inteltop="sudo intel_gpu_top"
@@ -148,7 +148,8 @@ alias flup="flatpak update -y"
 alias flt="flatpak"
 alias alpbox="distrobox enter alpinedev"
 alias host="terminator -p default"
-
+alias mirrors="sudo reflector --save /etc/pacman.d/mirrorlist --country Brazil,US,UK --protocol https --latest 50"
+alias cpdir="cp -par"
 ####################################-btrfs-####################################################
 alias btro="sudo btrfs su snap -r"
 alias show="sudo btrfs su show"
@@ -158,12 +159,10 @@ alias btcr="sudo btrfs su cr"
 alias btsnap="sudo btrfs su snap"
 #######################################-multimidia##########################################
 alias vlc="org.videolan.VLC"
-alias mpv="ln -sf ~/.config/mpv/configvideo ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias smpv="ln -sf ~/.config/mpv/confignospeed ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias nmpv="ln -sf ~/.config/mpv/confignovaapi ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias ampv="ln -sf ~/.config/mpv/configaudio ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias cmpv="ln -sf ~/.config/mpv/configclear ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias hmpv="ln -sf ~/.config/mpv/confighighvideo ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
+alias mpv="io.mpv.Mpv --profile=youtube --osc=yes"
+alias smpv="io.mpv.Mpv --profile=youtube-low --osc=yes"
+alias ampv="io.mpv.Mpv --profile=audio --osc=yes"
+alias hmpv="io.mpv.Mpv --profile=youtube-high --osc=yes"
 alias quality="yt-dlp -F"
 alias download='cd ~/Vídeos && yt-dlp -f '
 alias downloadhere='yt-dlp -f'
@@ -184,13 +183,15 @@ alias killdrop="docker stop snapdrop"
 ##################################################################################
 #export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export SYSTEMD_EDITOR="/usr/bin/nvim"
-export PATH=$PATH:/home/USERNAME/bin:/home/USERNAME/.local/bin:/opt
+export PATH=$PATH:/home/USERNAME/bin:/home/USERNAME/.local/bin:/home/USERNAME/.local/bin/archpath
 export MANPAGER="nvim +Man!" 
 export EDITOR="nvim"
 export FZF_BASE=/home/USERNAME/fzf/shell
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
+#for docker-compose on podman export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
 export DOCKER_CONTEXT=default
 export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+source <(kompose completion zsh)
 #upload file,512mb limit
 upload() {
     for i in "$@" 
@@ -254,7 +255,7 @@ command_not_found_handle() {
 if [ -n "${ZSH_VERSION-}" ]; then
   command_not_found_handler() {
     command_not_found_handle "$@"
- }
+}
 fi
 vagrant(){
   podman run -it --rm \
@@ -271,12 +272,32 @@ vagrant(){
 }
 archwiki(){
 search_term=$(echo $@ | sed 's/\ /+/g')
-lynx "https://wiki.archlinux.org/index.php?search="$search_term
+w3m "https://wiki.archlinux.org/index.php?search="$search_term
 }
 deb(){
     for i in $@ ; do
         distrobox-export --bin /usr/bin/$i --export-path /home/USERNAME/.local/bin
     done
 }
-grep alpinedev /etc/hostname &&
-if [ $? -eq 0 ] ; then clear ; fi
+# Add this to your .bashrc, .zshrc or equivalent.
+# Run 'fff' with 'f' or whatever you decide to name the function.
+f() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/bin/archpath
+command_not_found_handle() { ############## or rename example to cnf, and using cnf !!
+search_term="$1"
+printf "command not found, searching $search_term on ArchPath container\n\n"
+distrobox-archpath-save "$search_term"
+$HOME/.local/.bin/archpath/yay -Fq "$search_term"
+if [ $? -ne 0 ] ; then
+printf "\nsearch on aur? zero for yes: "
+read -r search_aur </dev/tty
+    if [ "$search_aur" -eq "0" ] ; then
+        $HOME/.local/.bin/archpath/yay -Ss "$search_term"
+    else
+        exit 127
+    fi
+fi
+}
