@@ -1,2 +1,3 @@
 #!/bin/bash
-sed -i "s|victormatheus|USERNAME|g" zshrc && git push && sed -i "s|USERNAME|victormatheus|g" zshrc 
+name=$(whoami)
+sed -i "s|$name|USERNAME|g" zshrc && git push && sed -i "s|USERNAME|$name|g" zshrc 
