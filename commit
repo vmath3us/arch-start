@@ -1,0 +1,2 @@
+#!/bin/bash
+sed -i "s|victormatheus|USERNAME|g" zshrc && git pull
