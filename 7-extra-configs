@@ -18,9 +18,6 @@ function font_setup(){
 rm -rf ~/.local/share/fonts/ &&\
 mkdir -p ~/.local/share/fonts/ &&\
 cd ~/.local/share/fonts &&\
-git init &&\
-git remote add origin https://github.com/vmath3us/packfonts.git &&\ 
-git fetch &&\
-git checkout origin/main
+git clone https://github.com/vmath3us/packfonts.git
 }
 gh_bin
