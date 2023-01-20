@@ -158,12 +158,10 @@ alias btcr="sudo btrfs su cr"
 alias btsnap="sudo btrfs su snap"
 #######################################-multimidia##########################################
 alias vlc="org.videolan.VLC"
-alias mpv="ln -sf ~/.config/mpv/configvideo ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias smpv="ln -sf ~/.config/mpv/confignospeed ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias nmpv="ln -sf ~/.config/mpv/confignovaapi ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias ampv="ln -sf ~/.config/mpv/configaudio ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias cmpv="ln -sf ~/.config/mpv/configclear ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
-alias hmpv="ln -sf ~/.config/mpv/confighighvideo ~/.config/mpv/config && io.mpv.Mpv --osc=yes"
+alias mpv="io.mpv.Mpv --profile=youtube --osc=yes"
+alias smpv="io.mpv.Mpv --profile=youtube-low--osc=yes"
+alias hmpv="io.mpv.Mpv --profile=youtube-high --osc=yes"
+alias ampv="io.mpv.Mpv --profile=audio --osc=yes"
 alias quality="yt-dlp -F"
 alias download='cd ~/Vídeos && yt-dlp -f '
 alias downloadhere='yt-dlp -f'
@@ -185,14 +183,12 @@ alias killdrop="docker stop snapdrop"
 #export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export SYSTEMD_EDITOR="/usr/bin/nvim"
 export PATH=$PATH:/home/USERNAME/bin:/home/USERNAME/.local/bin:/home/USERNAME/.local/bin/archpath
-export PATH=$PATH:/home/USERNAME/bin:/home/USERNAME/.local/bin:/opt
 export MANPAGER="nvim +Man!" 
 export EDITOR="nvim"
 export FZF_BASE=/home/USERNAME/fzf/shell
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 export DOCKER_CONTEXT=default
 export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
-source <(kompose completion zsh)
 export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
 #upload file,512mb limit
 upload() {
@@ -283,3 +279,32 @@ deb(){
 }
 grep alpinedev /etc/hostname &&
 if [ $? -eq 0 ] ; then clear ; fi
+#### setup to vmath3us/ArchPath, past on .SHELLrc (read your shell documentation)
+
+# bash
+#### https://www.gnu.org/software/bash/manual/bash.html#Command-Search-and-Execution
+
+#zsh
+#### https://zsh.sourceforge.io/Doc/Release/Command-Execution.html
+
+#fish
+#### https://fishshell.com/docs/current/cmds/fish_command_not_found.html
+
+#--------------------------past---------------------------------------------
+cnf() { ############## or rename example to cnf, and using cnf !!
+printf "command not found, searching on ArchPath container\n\n"
+search_term="$1"
+yay -Fq "$search_term"
+if [ $? -ne 0 ] ; then
+printf "\nsearch on aur? zero for yes: "
+read -r search_aur </dev/tty
+    if [ "$search_aur" -eq "0" ] ; then
+        yay -Ss "$search_term"
+    else
+        exit 127
+    fi
+fi
+}
+dtb-imp () { ################### or rename, example dtb-imp
+    /home/$USER/.local/bin/distrobox-enter  -n ArchPath -- /usr/bin/distrobox-import-handler
+}
