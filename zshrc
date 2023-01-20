@@ -301,7 +301,7 @@ read -r search_aur </dev/tty
     if [ "$search_aur" -eq "0" ] ; then
         yay -Ss "$search_term"
     else
-        exit 127
+        return 127
     fi
 fi
 }
