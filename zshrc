@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH="$PATH=$HOME/bin:/usr/local/bin:$PATH"
 # Path to your oh-my-zsh installation.
-export ZSH="/home/victormatheus/.oh-my-zsh"
+export ZSH="/home/USERNAME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -182,14 +182,14 @@ alias killdrop="docker stop snapdrop"
 ##################################################################################
 #export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export SYSTEMD_EDITOR="/usr/bin/nvim"
-export PATH=$PATH:/home/victormatheus/bin:/home/victormatheus/.local/bin:/home/victormatheus/.local/bin/archpath
+export PATH=$PATH:/home/USERNAME/bin:/home/USERNAME/.local/bin:/home/USERNAME/.local/bin/archpath
 export MANPAGER="nvim +Man!" 
 export EDITOR="nvim"
-export FZF_BASE=/home/victormatheus/fzf/shell
+export FZF_BASE=/home/USERNAME/fzf/shell
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 export DOCKER_CONTEXT=default
-export XDG_DATA_DIRS=/home/victormatheus/.local/share/:/home/victormatheus/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
-export XDG_DATA_DIRS=/home/victormatheus/.local/share/:/home/victormatheus/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
 #upload file,512mb limit
 upload() {
     for i in "$@" 
@@ -274,7 +274,7 @@ lynx "https://wiki.archlinux.org/index.php?search="$search_term
 }
 deb(){
     for i in $@ ; do
-        distrobox-export --bin /usr/bin/$i --export-path /home/victormatheus/.local/bin
+        distrobox-export --bin /usr/bin/$i --export-path /home/USERNAME/.local/bin
     done
 }
 grep alpinedev /etc/hostname &&
