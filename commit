@@ -1,6 +1,6 @@
 #!/bin/bash
 name=$(whoami)
 sed -i "s|$name|USERNAME|g" zshrc
-git commit zshrc -m "up version zshrc"
+git commit -S zshrc -m "up version zshrc"
 git push
 sed -i "s|USERNAME|$name|g" zshrc 
