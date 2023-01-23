@@ -13,6 +13,7 @@ flathub	com.github.GradienceTeam.Gradience
 flathub	com.github.maoschanz.drawing
 devel-origin	com.github.marhkb.Pods.Devel
 flathub	com.github.tchx84.Flatseal
+flathub	com.github.tenderowl.frog
 flathub	com.github.wwmm.easyeffects
 flathub	com.gitlab.newsflash
 flathub	com.google.Chrome
@@ -29,12 +30,14 @@ flathub	eu.ithz.umftpd
 flathub	fr.natron.Natron
 flathub	in.srev.guiscrcpy
 flathub	io.freetubeapp.FreeTube
+flathub	io.github.jeffshee.Hidamari
 flathub-beta	io.github.kotatogram
 distrobox-origin	io.github.luca.distrobox
 flathub	io.github.peazip.PeaZip
 flathub	io.github.seadve.Kooha
 flathub	io.github.spacingbat3.webcord
 flathub	io.mpv.Mpv
+podmandesktop-origin	io.podman_desktop.PodmanDesktop
 flathub	me.aandrew.ytdownloader
 flathub	net.agalwood.Motrix
 flathub	net.scribus.Scribus
@@ -48,6 +51,7 @@ flathub	org.freedesktop.Platform.VulkanInfo
 flathub-beta	org.gimp.GIMP
 flathub	org.gimp.GIMP
 flathub	org.gnome.Aisleriot
+flathub-beta	org.gnome.Boxes
 flathub	org.gnome.Builder
 flathub	org.gnome.Calculator
 flathub	org.gnome.Characters
@@ -60,6 +64,7 @@ flathub	org.gnome.GHex
 flathub	org.gnome.Maps
 flathub	org.gnome.NautilusPreviewer
 flathub	org.gnome.NetworkDisplays
+flathub	org.gnome.Photos
 flathub	org.gnome.SoundRecorder
 flathub-beta	org.gnome.TextEditor
 flathub	org.gnome.Weather
