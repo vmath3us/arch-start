@@ -162,6 +162,7 @@ alias mpv="io.mpv.Mpv --profile=youtube --osc=yes"
 alias smpv="io.mpv.Mpv --profile=youtube-low--osc=yes"
 alias hmpv="io.mpv.Mpv --profile=youtube-high --osc=yes"
 alias ampv="io.mpv.Mpv --profile=audio --osc=yes"
+alias ytb="ytfzf --force-youtube --nsfw -t"
 alias quality="yt-dlp -F"
 alias download='cd ~/Vídeos && yt-dlp -f '
 alias downloadhere='yt-dlp -f'
@@ -277,8 +278,7 @@ deb(){
         distrobox-export --bin /usr/bin/$i --export-path /home/USERNAME/.local/bin
     done
 }
-grep alpinedev /etc/hostname &&
-if [ $? -eq 0 ] ; then clear ; fi
+if [ "$(cat /etc/hostname)" != "USERNAME" ] ; then clear ; fi
 #### setup to vmath3us/ArchPath, past on .SHELLrc (read your shell documentation)
 
 # bash
@@ -306,5 +306,23 @@ read -r search_aur </dev/tty
 fi
 }
 dtb-imp () { ################### or rename, example dtb-imp
+if [ "$(cat /etc/hostname)" = "USERNAME" ] ; then
     /home/$USER/.local/bin/distrobox-enter  -n ArchPath -- /usr/bin/distrobox-import-handler
+else
+    distrobox-import-handler
+fi
+}
+kvm(){
+    dir_vm="/home/USERNAME/VMs/"
+    find "$dir_vm" -maxdepth 1 -iname "*img*"
+    printf "nome da imagem. enter para pular%s\n"
+    read -r name </dev/tty
+    printf "tamanho da imagem, em gigas. enter para pular%s\n"
+    read -r size </dev/tty
+    if [ ! -f "$dir_vm""$name".img ] || [ ! -z "$size" ] ; then qemu-img create -f raw "$dir_vm""$name".img "$size"G ;fi &&
+    if [ -z $1 ] ; then
+    qemu-system-x86_64 -enable-kvm -smp 2 -m 4096 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -drive format=raw,file="$dir_vm""$name".img
+    else
+    qemu-system-x86_64 -enable-kvm -smp 2 -m 4096 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -cdrom $1 -drive format=raw,file="$dir_vm""$name".img
+    fi
 }
