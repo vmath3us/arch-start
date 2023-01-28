@@ -148,7 +148,8 @@ alias flup="flatpak update -y"
 alias flt="flatpak"
 alias alpbox="distrobox enter alpinedev"
 alias host="terminator -p default"
-
+alias cb="clipcopy"
+alias cpt="clippaste"
 ####################################-btrfs-####################################################
 alias btro="sudo btrfs su snap -r"
 alias show="sudo btrfs su show"
@@ -191,7 +192,12 @@ export DOCKER_HOST=unix:///run/user/1000/docker.sock
 export DOCKER_CONTEXT=default
 export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
 export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+###############################################################################
+#                   gpg
+#############################################################################
 export GPG_TTY=$TTY
+gpgconf --launch gpg-agent
+###############################################################################
 #upload file,512mb limit
 upload() {
     for i in "$@" 
@@ -322,8 +328,8 @@ kvm(){
     read -r size </dev/tty
     if [ ! -f "$dir_vm""$name".img ] || [ ! -z "$size" ] ; then qemu-img create -f raw "$dir_vm""$name".img "$size"G ;fi &&
     if [ -z $1 ] ; then
-    qemu-system-x86_64 -enable-kvm -smp 2 -m 4096 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -drive format=raw,file="$dir_vm""$name".img
+    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -nographic -drive format=raw,file="$dir_vm""$name.img"
     else
-    qemu-system-x86_64 -enable-kvm -smp 2 -m 4096 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -cdrom $1 -drive format=raw,file="$dir_vm""$name".img
+    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -nographic -drive format=raw,file="$dir_vm""$name.img" -cdrom $1
     fi
 }
