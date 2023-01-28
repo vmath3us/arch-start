@@ -191,7 +191,7 @@ export DOCKER_HOST=unix:///run/user/1000/docker.sock
 export DOCKER_CONTEXT=default
 export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
 export XDG_DATA_DIRS=/home/USERNAME/.local/share/:/home/USERNAME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
 #upload file,512mb limit
 upload() {
     for i in "$@" 
