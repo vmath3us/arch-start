@@ -1,4 +1,5 @@
 unset SESSION_MANAGER
+if [ -f /run/.containerenv ] ; then clear ; fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -86,6 +87,7 @@ plugins=(
      zsh-autosuggestions
      systemd
      zsh-syntax-highlighting
+     ansible
      k
 )
 
@@ -163,7 +165,7 @@ alias mpv="io.mpv.Mpv --profile=youtube --osc=yes"
 alias smpv="io.mpv.Mpv --profile=youtube-low--osc=yes"
 alias hmpv="io.mpv.Mpv --profile=youtube-high --osc=yes"
 alias ampv="io.mpv.Mpv --profile=audio --osc=yes"
-alias ytb="ytfzf --force-youtube --nsfw -t"
+alias ytb="ytfzf --force-youtube --nsfw"
 alias quality="yt-dlp -F"
 alias download='cd ~/Vídeos && yt-dlp -f '
 alias downloadhere='yt-dlp -f'
@@ -177,6 +179,8 @@ alias dhe="distrobox-host-exec"
 alias dtb="distrobox"
 alias startdrop="docker start snapdrop && ip"
 alias killdrop="docker stop snapdrop"
+alias moment="date +%Y-%m-%d--%H-%M-%S"
+alias bw="/home/USERNAME/.local/share/flatpak/app/com.bitwarden.desktop/current/active/files/bin/bw"
 ######################################################################################
 #
 #				export
@@ -282,10 +286,10 @@ lynx "https://wiki.archlinux.org/index.php?search="$search_term
 }
 deb(){
     for i in $@ ; do
-        distrobox-export --bin /usr/bin/$i --export-path /home/USERNAME/.local/bin
+        binary_path=$(which $i)
+        distrobox-export --bin $binary_path --export-path /home/USERNAME/.local/bin
     done
 }
-if [ "$(cat /etc/hostname)" != "USERNAME" ] ; then clear ; fi
 #### setup to vmath3us/ArchPath, past on .SHELLrc (read your shell documentation)
 
 # bash
@@ -328,8 +332,8 @@ kvm(){
     read -r size </dev/tty
     if [ ! -f "$dir_vm""$name".img ] || [ ! -z "$size" ] ; then qemu-img create -f raw "$dir_vm""$name".img "$size"G ;fi &&
     if [ -z $1 ] ; then
-    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -nographic -drive format=raw,file="$dir_vm""$name.img"
+    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22  -drive format=raw,file="$dir_vm""$name.img"
     else
-    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -nographic -drive format=raw,file="$dir_vm""$name.img" -cdrom $1
+    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22  -drive format=raw,file="$dir_vm""$name.img" -cdrom $1
     fi
 }
