@@ -337,3 +337,6 @@ kvm(){
     qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22  -drive format=raw,file="$dir_vm""$name.img" -cdrom $1
     fi
 }
+bwpass(){
+    bw get password $1 | cb
+}
