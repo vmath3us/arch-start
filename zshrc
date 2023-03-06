@@ -152,6 +152,7 @@ alias alpbox="distrobox enter alpinedev"
 alias host="terminator -p default"
 alias cb="clipcopy"
 alias cpt="clippaste"
+alias dhere="curl -ZfsSLOC -"
 ####################################-btrfs-####################################################
 alias btro="sudo btrfs su snap -r"
 alias show="sudo btrfs su show"
@@ -325,18 +326,25 @@ fi
 }
 kvm(){
     dir_vm="/home/USERNAME/VMs/"
-    find "$dir_vm" -maxdepth 1 -iname "*img*"
+    find "$dir_vm" -maxdepth 1 -iname "*img*" -o -iname "*bin*"
     printf "nome da imagem. enter para pular%s\n"
     read -r name </dev/tty
     printf "tamanho da imagem, em gigas. enter para pular%s\n"
     read -r size </dev/tty
     if [ ! -f "$dir_vm""$name".img ] || [ ! -z "$size" ] ; then qemu-img create -f raw "$dir_vm""$name".img "$size"G ;fi &&
     if [ -z $1 ] ; then
-    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22  -drive format=raw,file="$dir_vm""$name.img"
+    qemu-system-x86_64 -enable-kvm -smp 2 -m 4096 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -drive format=raw,file="$dir_vm""$name.img"
     else
-    qemu-system-x86_64 -enable-kvm -smp 1 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22  -drive format=raw,file="$dir_vm""$name.img" -cdrom $1
+    qemu-system-x86_64 -enable-kvm -smp 2 -m 4096 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -drive format=raw,file="$dir_vm""$name.img" -cdrom $1
     fi
 }
 bwpass(){
     bw get password $1 | cb
+}
+tarhere(){
+printf " destino do backup; caminho absoluto%s\n"
+read dir_save < /dev/tty
+for i in $(find $PWD -maxdepth 1); do 
+    name_file=$(echo $i | cut -d "/" -f1 --complement| sed -e "s|/|-|g")
+    tar --zstd --numeric-owner --xattrs --xattrs-include="*.*" -cpf $dir_save/$name_file.tar.zst $i; done
 }
