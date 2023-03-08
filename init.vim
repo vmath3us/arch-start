@@ -2,6 +2,8 @@
 if (has("nvim")) " . Only for nvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""vim-plug""""""""""""""""""""""""""""
     call plug#begin()
+        Plug 'pearofducks/ansible-vim'
+        Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
         Plug 'sainnhe/sonokai'
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
@@ -80,18 +82,23 @@ map <C-j> <C-w>j
 map <C-h> <C-w>h
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+map <C-t> :tabNext<CR>
 nmap qq :q
 nmap qf :q!
 nmap wq :wq <CR>
 nmap ss :%s/
 nmap ww :w <CR>
-nmap tt :split 
+nmap tt :tabnew 
 nmap tv :vsplit
-nmap op o<Esc>k
+nmap op o<Esc>p
 nmap oi O<Esc>j
+vnoremap jk <Esc>
+vnoremap jk <Esc>
+nmap oo A<CR>
 nmap oo A<CR>
 inoremap jk <Esc>
 vnoremap jk <Esc>
+"""""""""""""""""""""""""""""""""fzf"""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""fzf"""""""""""""""""""""""""""""""""
 nmap ff <Esc> :Files ~/
 vnoremap ff <Esc> :Files ~/
