@@ -11,6 +11,7 @@ if (has("nvim")) " . Only for nvim
         Plug 'junegunn/fzf.vim'
         Plug 'jiangmiao/auto-pairs'
         Plug 'ryanoasis/vim-devicons'
+
 """         Plug 'wbthomason/packer.nvim'
 """         Plug 'neovim/nvim-lspconfig'
 """         Plug 'williamboman/nvim-lsp-installer'
@@ -60,7 +61,7 @@ set encoding=utf-8      " The encoding should be utf-8 to activate the font icon
 set splitbelow          " Create the horizontal splits below
 set autoread            " Update vim after file update from outside
 set mouse=a             " Enable mouse support
-filetype on             " Detect and set the filetype option and trigger the FileType Event
+filetype on            " Detect and set the filetype option and trigger the FileType Event
 filetype plugin on      " Load the plugin file for the file type, if any
 filetype indent on      " Load the indent file for the file type, if any
 if exists('+termguicolors')
@@ -92,12 +93,9 @@ nmap tt :tabnew
 nmap tv :vsplit
 nmap op o<Esc>p
 nmap oi O<Esc>j
-vnoremap jk <Esc>
-vnoremap jk <Esc>
 nmap oo A<CR>
 nmap oo A<CR>
-inoremap jk <Esc>
-vnoremap jk <Esc>
+nmap tw :terminal
 """""""""""""""""""""""""""""""""fzf"""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""fzf"""""""""""""""""""""""""""""""""
 nmap ff <Esc> :Files ~/
