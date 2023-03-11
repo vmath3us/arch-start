@@ -153,6 +153,8 @@ alias host="terminator -p default"
 alias cb="clipcopy"
 alias cpt="clippaste"
 alias dhere="curl -ZfsSLOC -"
+alias html="lynx --display_charset=utf-8 -force_html -vikeys"
+alias htmldump="lynx --display_charset=utf-8 -force_html -dump"
 ####################################-btrfs-####################################################
 alias btro="sudo btrfs su snap -r"
 alias show="sudo btrfs su show"
@@ -225,7 +227,7 @@ newroot(){
     podman ps
 }
 root(){
-    podman start integrate-$@ && podman attach integrate-$@ --detach-keys="ctrl-d"
+    podman start integrate-$@ ; podman attach integrate-$@ --detach-keys="ctrl-d"
 }
 newisoroot(){
     image=$@ &&
@@ -233,11 +235,12 @@ newisoroot(){
     name=${namebar/\:/}&&
     podman stop iso-$name
     podman rm iso-$name
-    podman run --name iso-$name --detach-keys="ctrl-d" -it $@
+    podman create --name iso-$name -it $@ &&
+    podman start iso-$name && podman 'exec' --tty --interactive --detach-keys="" iso-$name 'sh'
     podman ps
 }
 isoroot(){
-    podman start iso-$@ && podman attach iso-$@ --detach-keys="ctrl-d"
+   podman start iso-$@ && podman 'exec' --tty --interactive --detach-keys="" iso-$@ 'sh'
 }
 tarsplit(){
     moment=$(date +%Y-%m-%d--%H-%M-%S)
@@ -281,14 +284,22 @@ vagrant(){
     docker.io/vagrantlibvirt/vagrant-libvirt:latest \
       vagrant $@
 }
+awx(){
+    podman run -it --rm \
+    -v $(realpath "${PWD}"):${PWD} \
+    -w "${PWD}" \
+    --network host \
+    awx-podman \
+    awx $@
+}
 archwiki(){
 search_term=$(echo $@ | sed 's/\ /+/g')
-lynx "https://wiki.archlinux.org/index.php?search="$search_term
+w3m "https://wiki.archlinux.org/index.php?search="$search_term
 }
 deb(){
     for i in $@ ; do
         binary_path=$(which $i)
-        distrobox-export --bin $binary_path --export-path /home/USERNAME/.local/bin
+        distrobox-export --bin $binary_path --export-path /home/USERNAME/.local/bin/archpath
     done
 }
 #### setup to vmath3us/ArchPath, past on .SHELLrc (read your shell documentation)
@@ -339,7 +350,7 @@ kvm(){
     fi
 }
 kvmnodisplay(){
-    qemu-system-x86_64 -enable-kvm -smp 2 -m 4096 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -drive format=raw,file=$(readlink -f $@) -display none
+    qemu-system-x86_64 -enable-kvm -smp 2 -m 2048 -boot menu=on -cpu host -bios /usr/share/ovmf/x64/OVMF.fd -nic user,hostfwd=tcp::8888-:22 -drive format=raw,file=$(readlink -f $@) -nographic
 }
 bwpass(){
     bw get password $1 | cb
@@ -350,4 +361,7 @@ read dir_save < /dev/tty
 for i in $(find $PWD -maxdepth 1); do 
     name_file=$(echo $i | cut -d "/" -f1 --complement| sed -e "s|/|-|g")
     tar --zstd --numeric-owner --xattrs --xattrs-include="*.*" -cpf $dir_save/$name_file.tar.zst $i; done
+}
+copy(){
+cp -paruv "$@"
 }
