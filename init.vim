@@ -94,13 +94,11 @@ nmap tv :vsplit
 nmap op o<Esc>p
 nmap oi O<Esc>j
 nmap oo A<CR>
-nmap oo A<CR>
 nmap tw :terminal
-"""""""""""""""""""""""""""""""""fzf"""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""fzf"""""""""""""""""""""""""""""""""
 nmap ff <Esc> :Files ~/
 vnoremap ff <Esc> :Files ~/
-map bb <Esc> :Buffers <CR>
 """""""""""""""""""""""""""buffer management"""""""""""""""""""""""""""
 map bw <Esc> :w <CR> <Esc> :bw <CR>
 map bq <Esc> :bdelete! <CR>
+map bb <Esc> :Buffers <CR>
